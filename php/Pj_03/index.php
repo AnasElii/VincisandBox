@@ -27,11 +27,60 @@ echo "$directory" . "<br>";
 $b = 10;
 $b == 10 ? print "TRUE" : print "FALSE";
 
-$time = "<br> The date is : ";
+//Local Variables
+echo "<br>========/ Local Variables /========";
 
-echo longdate($time, time() - 17 * 24 * 60 * 60);
+$time = "<br> The date is : ";
 
 function longdate($time, $timestamp)
 {
     return $time . date("l F j s Y ", $timestamp);
 }
+
+echo longdate($time, time() - 17 * 24 * 60 * 60);
+echo $time;
+
+
+
+//Global Variables
+echo "<br>========/ Global Variables /========";
+$GLOBALS['ISLOGGEDIN'] = "True";
+
+function GlobalTest()
+{
+    echo "<br>" . $GLOBALS["ISLOGGEDIN"] = "false";
+}
+
+GlobalTest();
+
+
+//Static Variables
+echo "<br>========/ Static Variables /========";
+$GLOBALS['ISLOGGEDIN'] = "True";
+
+function CountTest($Count2 = "mouad")
+{
+    static $Count = 0;
+    echo "<br> $Count";
+    $Count = $Count2;
+    return $Count;
+}
+
+// while (true) {
+//     CountTest();
+//     if (CountTest() >= 5)
+//         break;
+// }
+
+CountTest();
+
+function StaticTest($Countable)
+{
+    echo "<br>" . $Countable;
+}
+
+StaticTest(CountTest("anas"));
+
+echo "<br>========/ Superglobal variables /========";
+$came_from = htmlentities($_SERVER['HTTP_REFERER']);
+echo "<br>" . $came_from;
