@@ -1,8 +1,5 @@
 <?php
-$html = "Hello World";
-
-echo $html;
-
+phpinfo();
 
 // Learn the Php Book
 // Start the last exe
