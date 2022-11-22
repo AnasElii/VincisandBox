@@ -17,18 +17,32 @@
 
             <div class="enterData">
                 <div class="form-control">
-                    <input type="text" required>
+                    <input type="text" name="name" required>
                     <label>Name</label>
                 </div>
 
                 <div class="form-control">
-                    <input type="email" required>
+                    <input type="email" name="email" required>
                     <label>Email</label>
                 </div>
 
-                <button class="btn">Add</button>
+                <button class="btn" name="submate">Add</button>
             </div>
 
+            <?php
+            $clientList = array();
+            $index = count($clientList);
+
+            $client = array(
+                "id" => $index,
+                "name" => "Anas",
+                "email" => "aninosspro@gmail.com",
+            );
+            array_push($clientList,  $client);
+            ?>
+        </form>
+
+        <form>
             <table>
                 <thead>
                     <tr>
@@ -39,27 +53,46 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Anas</td>
-                        <td>aninosspro@gamil.com</td>
-                        <td><button class="btn updateeBtn">Update</button></td>
-                        <td><button class="btn deleteBtn">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>Anas</td>
-                        <td>aninosspro@gamil.com</td>
-                        <td><button class="btn updateeBtn">Update</button></td>
-                        <td><button class="btn deleteBtn">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>Anas</td>
-                        <td>aninosspro@gamil.com</td>
-                        <td><button class="btn updateeBtn">Update</button></td>
-                        <td><button class="btn deleteBtn">Delete</button></td>
-                    </tr>
+                    <?php
+                    foreach ($clientList as $client) {
+                        $id;
+
+
+                    ?>
+                        <tr>
+                            <?php
+                            foreach ($client as $key => $value) {
+                                if ($key !== "id") {
+
+
+                            ?>
+                                    <td><?php echo  $value ?></td>
+                            <?php
+                                } else {
+
+                                    $id = $value;
+                                }
+                            }
+                            ?>
+
+                            <td><button class="btn updateeBtn" name="update">Update</button></td>
+                            <td><button class="btn deleteBtn" name="delete">Delete</button></td>
+                        </tr>
+                    <?php
+
+                    }
+                    ?>
                 </tbody>
             </table>
         </form>
+
+        <?php
+        if (isset($_GET["submate"])) {
+
+            $name = $_GET["name"];
+            $email = $_GET["email"];
+        }
+        ?>
     </div>
     <script src="script.js"></script>
 </body>
