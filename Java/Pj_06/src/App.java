@@ -5,11 +5,12 @@ public class App {
         Scanner cin = new Scanner(System.in);
         int number = cin.nextInt();
         int index = 1;
+        char ch = (char) 219;
         while (number >= index) {
 
             int i = 1;
             while (i < index) {
-                System.out.print(" ");
+                System.out.print(ch + "");
                 i++;
             }
 
