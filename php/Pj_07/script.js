@@ -9,3 +9,5 @@ labels.forEach((label) => {
     )
     .join("");
 });
+
+document.getElementById("content").innerHTML = "<?php echo $home?>";
