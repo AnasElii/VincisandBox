@@ -1,14 +1,17 @@
 public class Produit {
-    private static int id = 0;
+    private int id;
     private String designation;
     private double prixUnit;
     private int qteStock;
 
+    private static int staticID = 0;
+
     Produit(String designation, double prixUnit, int qteStock) {
-        id++;
+        this.id = staticID + 1;
         this.designation = designation;
         this.prixUnit = prixUnit;
         this.qteStock = qteStock;
+        staticID++;
     }
 
     int GetID() {

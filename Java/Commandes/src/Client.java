@@ -1,11 +1,13 @@
 public class Client {
-    private static int id = 0;
+    private int id;
     private String nom;
     private String adresse;
     private String tel;
 
+    private static int staticID = 0;
+
     Client(String nom, String adresse, String tel) {
-        id++;
+        this.id = staticID + 1;
         this.nom = nom;
         this.adresse = adresse;
         this.tel = tel;

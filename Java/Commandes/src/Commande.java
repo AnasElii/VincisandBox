@@ -2,14 +2,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Commande {
-    private static int id = 0;
+    private int id;
     private LocalDate date;
     private boolean type = false; // 1 = express | 0 = normale
     private boolean payee;
     private Client client;
 
+    private static int staticID = 0;
+
     Commande(LocalDate date, boolean type, boolean payee, Client client) {
-        id++;
+        this.id = staticID + 1;
         this.date = date;
         this.type = type;
         this.payee = payee;
@@ -33,7 +35,7 @@ public class Commande {
     }
 
     void SetType(boolean type) {
-        type = type;
+        this.type = type;
     }
 
     boolean GetPyee() {
