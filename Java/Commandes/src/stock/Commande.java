@@ -1,3 +1,5 @@
+package stock;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -10,6 +12,9 @@ public class Commande {
 
     private static int staticID = 0;
 
+    public Commande() {
+    }
+
     Commande(LocalDate date, boolean type, boolean payee, Client client) {
         this.id = staticID + 1;
         this.date = date;
@@ -18,43 +23,47 @@ public class Commande {
         this.client = client;
     }
 
-    int GetID() {
+    public int GetID() {
         return id;
     }
 
-    LocalDate GetDate() {
+    public LocalDate GetDate() {
         return date;
     }
 
-    void SetDate(LocalDate date) {
+    public void SetDate(LocalDate date) {
         this.date = date;
     }
 
-    boolean GetType() {
+    public boolean GetType() {
         return type;
     }
 
-    void SetType(boolean type) {
+    public void SetType(boolean type) {
         this.type = type;
     }
 
-    boolean GetPyee() {
+    public boolean GetPyee() {
         return payee;
     }
 
-    void SetPayee(boolean payee) {
+    public void SetPayee(boolean payee) {
         this.payee = payee;
     }
 
-    Client GetClient() {
+    public Client GetClient() {
         return client;
     }
 
-    void SetPayee(Client client) {
+    public void SetClient(Client client) {
         this.client = client;
     }
 
-    double calculTotalComande(ArrayList<LigneCommande> ligneCommandeList) {
+    public void SetPayee(Client client) {
+        this.client = client;
+    }
+
+    public double calculTotalComande(ArrayList<LigneCommande> ligneCommandeList) {
         double totale = 0;
         for (LigneCommande ligneCommande : ligneCommandeList) {
             totale = totale + ligneCommande.calculTotalProduit();

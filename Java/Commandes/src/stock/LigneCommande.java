@@ -1,8 +1,13 @@
+package stock;
+
 public class LigneCommande {
     private Produit produit;
     private Commande commande;
     private int qteCommande;
     private int reduction = 0;
+
+    public LigneCommande() {
+    }
 
     LigneCommande(Produit produit, Commande commande, int qteCommande, int reduction) {
         this.produit = produit;
@@ -11,27 +16,43 @@ public class LigneCommande {
         this.reduction = reduction;
     }
 
-    int GetCommandeID() {
+    public int GetCommandeID() {
         return commande.GetID();
     }
 
-    Commande GetCommande() {
+    public void SetCommande(Commande commande) {
+        this.commande = commande;
+    }
+
+    public Commande GetCommande() {
         return commande;
     }
 
-    Produit GetProduit() {
+    public void SetProduit(Produit produit) {
+        this.produit = produit;
+    }
+
+    public Produit GetProduit() {
         return produit;
+    }
+
+    public void SetQteCommande(int qteCommande) {
+        this.qteCommande = qteCommande;
     }
 
     public int GetQteCommande() {
         return qteCommande;
     }
 
+    public void SetReduction(int reduction) {
+        this.reduction = reduction;
+    }
+
     public int GetReduction() {
         return reduction;
     }
 
-    double calculTotalProduit() {
+    public double calculTotalProduit() {
         double tolalProduit = qteCommande * (produit.GetPrixUnit() - ((reduction / 100) * produit.GetPrixUnit()));
         return tolalProduit;
     }

@@ -1,3 +1,5 @@
+package stock;
+
 public class Client {
     private int id;
     private String nom;
@@ -6,6 +8,9 @@ public class Client {
 
     private static int staticID = 0;
 
+    public Client() {
+    }
+
     Client(String nom, String adresse, String tel) {
         this.id = staticID + 1;
         this.nom = nom;
@@ -13,31 +18,31 @@ public class Client {
         this.tel = tel;
     }
 
-    int GetID() {
+    public int GetID() {
         return id;
     }
 
-    String GetNom() {
+    public String GetNom() {
         return nom;
     }
 
-    void SetName(String nom) {
+    public void SetName(String nom) {
         this.nom = nom;
     }
 
-    String GetAdresse() {
+    public String GetAdresse() {
         return adresse;
     }
 
-    void SetAdresse(String adresse) {
+    public void SetAdresse(String adresse) {
         this.adresse = adresse;
     }
 
-    String GetTel() {
+    public String GetTel() {
         return tel;
     }
 
-    void SetTel(String tel) {
+    public void SetTel(String tel) {
         this.tel = tel;
     }
 

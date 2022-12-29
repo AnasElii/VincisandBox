@@ -1,9 +1,12 @@
+package facture;
+
+import stock.*;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class App {
+public class GestionCommande {
 
     private static Client addCLient(Scanner cin) {
         System.out.print("CLient name: ");
@@ -15,7 +18,10 @@ public class App {
         System.out.print("CLient Tel: ");
         String tel = cin.nextLine();
 
-        Client c = new Client(nom, adresse, tel);
+        Client c = new Client();
+        c.SetName(nom);
+        c.SetAdresse(adresse);
+        c.SetTel(tel);
         return c;
     }
 
@@ -28,7 +34,12 @@ public class App {
         int reduction = cin.nextInt();
         cin.nextLine();
 
-        LigneCommande l = new LigneCommande(produit, commande, qteCommande, reduction);
+        LigneCommande l = new LigneCommande();
+        l.SetProduit(produit);
+        l.SetCommande(commande);
+        l.SetQteCommande(qteCommande);
+        l.SetReduction(reduction);
+
         return l;
     }
 
@@ -43,7 +54,10 @@ public class App {
         int qteStock = cin.nextInt();
         cin.nextLine();
 
-        Produit p = new Produit(designation, prix, qteStock);
+        Produit p = new Produit();
+        p.SetDesignation(designation);
+        p.SetPrixUnit(prix);
+        p.SetQteStock(qteStock);
         return p;
     }
 
@@ -127,7 +141,12 @@ public class App {
         Client client = clientList.get(cID - 1);
 
         // Create New Commande
-        Commande commande = new Commande(LocalDate.now(), false, false, client);
+        Commande commande = new Commande();
+        commande.SetDate(LocalDate.now());
+        commande.SetType(false);
+        commande.SetPayee(false);
+        commande.SetClient(client);
+
         commandeList.add(commande);
 
         // Add LigneCommande to Commande

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-public class App {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-=======
 import java.util.Scanner;
 
 public class App {
@@ -24,6 +19,5 @@ public class App {
                 break;
             index++;
         }
->>>>>>> e7d697da0defec8f4dee8cbcf57367ac93fa7e2b
     }
 }
