@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="gestionClient.php" method="post">
+    <form action="clientControlers.php" method="post">
         <input type="submit" name="insert" value="Submit">
     </form>
 </body>
