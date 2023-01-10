@@ -1,34 +1,33 @@
 <?php
-require_once "../classes/client.php";
-require_once "../classes/gestionClient.php";
+require_once "../classes/produit.php";
+require_once "../classes/gestionProduit.php";
 
 if (isset($_POST["insert"])) {
 
-    $nom = $_POST["nom"];
-    $adress = $_POST["adress"];
-    $tel = $_POST["tel"];
+    $designation = $_POST["designation"];
+    $qteStock = $_POST["qteStock"];
+    $prixUnit = $_POST["prixUnit"];
 
-    $client = new Client($nom, $adress, $tel);
+    $produit = new Produit($designation, $qteStock, $prixUnit);
 
-    $gs = new GestionClient();
-    $gs->insert($client);
+    $gp = new GestionProduit();
+    $gp->insert($produit);
     header("Location: http://localhost:90/view/ajoutProduit.php");
 } else if (isset($_POST["update"])) {
 
     $id = $_POST["id"];
-    $nom = $_POST["nom"];
-    $adress = $_POST["adress"];
-    $tel = $_POST["tel"];
-    $client = new Client($nom, $adress, $tel);
+    $designation = $_POST["designation"];
+    $qteStock = $_POST["qteStock"];
+    $prixUnit = $_POST["prixUnit"];
+    $produit = new Produit($designation, $qteStock, $prixUnit);
 
-    $gs = new GestionClient();
-    $gs->update($id, $client);
-    header("Location: http://localhost:90/view/listeProduits.php");
+    $gp = new GestionProduit();
+    $gp->update($id, $produit);
 } else if (isset($_POST["delete"])) {
 
     $id = $_POST["id"];
 
-    $gs = new GestionClient();
-    $gs->delete($id);
-    header("Location: http://localhost:90/view/listeProduits.php");
+    $gp = new GestionProduit();
+    $gp->delete($id);
 }
+header("Location: http://localhost:90/view/listeProduits.php");

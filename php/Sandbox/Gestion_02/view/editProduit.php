@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="../controller/clientControlers.php" method="post">
+    <form action="../controller/produitContolers.php" method="post">
         <?php
         if (isset($_POST["update"])) {
             $id = $_POST["id"];
@@ -20,20 +20,19 @@
             <input type="text" value="<?php echo $id; ?>" disabled>
         </div>
         <div>
-            <span>Nom: </span>
-            <input type="text" name="nom">
+            <span>Designation: </span>
+            <input type="text" name="designation">
         </div>
         <div>
-            <span>Adress: </span>
-            <input type="text" name="adress">
+            <span>Qte Stock: </span>
+            <input type="text" name="qteStock">
         </div>
         <div>
-            <span>Tel: </span>
-            <input type="text" name="tel">
+            <span>Prix Unit: </span>
+            <input type="text" name="prixUnit">
         </div>
         <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <input type="hidden" name="update">
-        <input type="submit" value="Update">
+        <input type="submit" name="update" value="Update">
     </form>
 </body>
 

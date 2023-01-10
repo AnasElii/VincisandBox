@@ -10,23 +10,23 @@
 
 <body>
     <?php
-    require_once "../classes/gestionClient.php";
-    $g = new GestionClient();
+    require_once "../classes/gestionProduit.php";
+    $g = new GestionProduit();
     ?>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>NOM</th>
-                <th>ADRESSE</th>
-                <th>TEL</th>
+                <th>DESIGNATION</th>
+                <th>QTE_STOCK</th>
+                <th>PRIX_UNIT</th>
                 <th>OPTIONS</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($g->getAll() as $cliet) { ?>
+            <?php foreach ($g->getAll() as $produit) { ?>
                 <tr>
-                    <?php foreach ($cliet as $key => $value) {
+                    <?php foreach ($produit as $key => $value) {
                         if ($key == "ID") {
                             $id = $value;
                         }
@@ -35,17 +35,13 @@
                         <td><?php echo $value ?></td>
                     <?php } ?>
                     <td>
-                        <input type="hidden" name="afficheCommandes">
-                        <input type="submit" value="Afficher Commandes">
-                    </td>
-                    <td>
-                        <form action="../view/editClient.php" method="post">
+                        <form action="../view/editProduit.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <input type="submit" name="update" value="Editer">
                         </form>
                     </td>
                     <td>
-                        <form action="../controller/clientControlers.php" method="post">
+                        <form action="../controller/produitContolers.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <input type="submit" name="delete" value="Supprimer">
                         </form>

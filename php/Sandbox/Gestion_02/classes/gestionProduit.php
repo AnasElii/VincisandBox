@@ -1,4 +1,5 @@
 <?php
+require_once "../data/dbConnection.php";
 class GestionProduit
 {
     public function insert($produit)
