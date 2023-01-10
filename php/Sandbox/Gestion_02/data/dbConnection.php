@@ -28,11 +28,11 @@ class Database
         }
     }
 
-    public final function execQuery($q)
+    public final function execQuery($q, $array = [])
     {
         $query = $this->pdo->prepare($q);
-        $query->execute();
-        $result = $query->fetchAll();
-        print_r($result);
+        $query->execute($array);
+        return $result = $query->fetchAll();
+        //print_r($result);
     }
 }

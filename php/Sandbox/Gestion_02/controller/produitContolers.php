@@ -12,7 +12,7 @@ if (isset($_POST["insert"])) {
 
     $gs = new GestionClient();
     $gs->insert($client);
-    header("Location: http://localhost:90/view/ajoutClient.php");
+    header("Location: http://localhost:90/view/ajoutProduit.php");
 } else if (isset($_POST["update"])) {
 
     $id = $_POST["id"];
@@ -23,12 +23,12 @@ if (isset($_POST["insert"])) {
 
     $gs = new GestionClient();
     $gs->update($id, $client);
-    header("Location: http://localhost:90/view/listeClients.php");
+    header("Location: http://localhost:90/view/listeProduits.php");
 } else if (isset($_POST["delete"])) {
 
     $id = $_POST["id"];
 
     $gs = new GestionClient();
     $gs->delete($id);
-    header("Location: http://localhost:90/view/listeClients.php");
+    header("Location: http://localhost:90/view/listeProduits.php");
 }
