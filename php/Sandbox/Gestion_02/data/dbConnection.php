@@ -21,7 +21,7 @@ class Database
     {
         try {
             $this->pdo = new PDO("mysql:host=$this->host;port=$this->port;dbname=$this->data;charset=$this->chrs", $this->user, $this->pass, $this->opts);
-            echo "Connection Established";
+            echo "Connection Established<br>";
         } catch (Exception $ex) {
             print "Erro!: " . $ex->getMessage() . "<br>";
             die();
