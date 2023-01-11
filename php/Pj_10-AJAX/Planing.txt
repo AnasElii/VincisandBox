@@ -1,0 +1,24 @@
+Ajax // Fill 2 ComboBox with data without reloading the page :)
+	/=> Car Marque
+	|
+	| On Select
+	|
+	\=> Car Modeles
++ Js 
+	--> Main Fail Js
+	--> Jquery
++ Php Classes
+	--> Classes
+		--> Marque Class ✅
+			= ID
+			= Name
+			= Country
+		--> Modele ✅
+			= ID
+			= Name
+			= Release Year
+			= MarqueObject
+	--> Controler
+		-->
+	--> Data ✅
+		--> dbConnect.php // Contain all the connection to DB information                                                

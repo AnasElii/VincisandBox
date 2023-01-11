@@ -9,7 +9,11 @@
 </head>
 
 <body>
+    <?php require_once "./controllers/controllers.php" ?>
     <select name="" id="">
+        $marques = new Marqu
+        <?php foreach ($marque as $key => $value) {
+        } ?>
         <option value=""></option>
     </select>
     <input type="button" value="Button">
