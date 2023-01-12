@@ -9,12 +9,16 @@
 </head>
 
 <body>
-    <?php require_once "./controllers/controllers.php" ?>
+    <?php
+    require_once "./classes/gestionMarque.php";
+    ?>
     <select name="" id="">
-        $marques = new Marqu
-        <?php foreach ($marque as $key => $value) {
-        } ?>
-        <option value=""></option>
+        <?php
+        $g = new GestionMarque();
+        foreach ($g->getAll() as $value) {
+        ?>
+            <option value=""><?php echo $value->getNom(); ?></option>
+        <?php } ?>
     </select>
     <input type="button" value="Button">
 </body>

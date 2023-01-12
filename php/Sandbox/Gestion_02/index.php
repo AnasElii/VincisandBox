@@ -10,6 +10,7 @@
 
 <body>
     <form action="./controller/clientControlers.php" method="post">
+        <input type="text" name="static">
         <input type="submit" name="insert" value="Submit">
     </form>
 </body>

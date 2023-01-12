@@ -58,4 +58,22 @@ class Client
     {
         $this->tel = $tel;
     }
+
+    /**
+     * Get the value of clientNumber
+     */
+    public function getClientNumber()
+    {
+        return self::$clientNumber;
+    }
+
+    /**
+     * Set the value of clientNumber
+     *
+     * @return  self
+     */
+    public function setClientNumber($clientNumber)
+    {
+        self::$clientNumber = $clientNumber;
+    }
 }

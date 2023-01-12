@@ -1,6 +1,6 @@
 <?php
-require_once "./marque.php";
 require_once "../data/dbConnect.php";
+require_once "./marque.php";
 
 class GestionMarque
 {
@@ -8,13 +8,12 @@ class GestionMarque
 
     public function getAll()
     {
-        $db = new dbConnect();
+        $db = new DBConnect();
         $marqueList  = $db->execQuery("SELECT * FROM marque");
         foreach ($marqueList as $marque) {
             $m = new Marque($marque["ID"], $marque["NOM"], $marque["PAYS"]);
             array_push($this->list, $m);
         }
-
         return $this->list;
     }
 

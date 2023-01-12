@@ -10,6 +10,10 @@ if (isset($_POST["insert"])) {
 
     $client = new Client($nom, $adress, $tel);
 
+    echo $client->getClientNumber() . "<br>";
+    $client->setClientNumber(20);
+    echo $client->getClientNumber() . "<br>";
+
     $gs = new GestionClient();
     $gs->insert($client);
     header("Location: http://localhost:90/view/ajoutClient.php");
