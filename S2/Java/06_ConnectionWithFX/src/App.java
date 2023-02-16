@@ -1,6 +1,8 @@
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,18 +22,30 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    public static void executeQuery(String DB_URL, String Username, String Password, String query, String DB,
+    public static void executeQuery(String DB_URL, String Username, String Password, String query, List properties,
+            String DB,
             String message) {
         try {
             Connection conn = DriverManager.getConnection(DB_URL + DB, Username, Password);
             // System.out.println("Connected database successfully...");
-            Statement stmt = conn.createStatement();
-            stmt.executeUpdate(query);
+            PreparedStatement pr = conn.prepareStatement(query);
+
+            if (properties != null)
+                for (Object str : properties) {
+
+                    pr.setString(1, (String) str);
+                }
+
+            pr.executeUpdate(query);
             System.out.println(message);
-            stmt.close();
+
+            pr.close();
             conn.close();
+
         } catch (Exception e) {
+
             System.out.println(e.toString());
+
         }
     }
 
@@ -49,18 +63,25 @@ public class App extends Application {
         DB_URL = p.getProperty("url");
         UserName = p.getProperty("user");
         Password = p.getProperty("password");
+        List ls = new ArrayList<>();
+        String query;
 
         // Create Database
-        executeQuery(DB_URL, UserName, Password, "CREATE DATABASE gestion_rh", "", "Table \" gestion_rh \" Database");
+        query = "CREATE DATABASE gestion_rh";
+        executeQuery(DB_URL, UserName, Password, query, ls, "", "Table \" gestion_rh \" Database");
 
         // Create Tables
-        executeQuery(DB_URL, UserName, Password, "CREATE TABLE service(" +
+        // Service Table
+        query = "CREATE TABLE service(" +
                 "ID INT(5) Primary Key AUTO_INCREMENT NOT NULL," +
                 "NOM VARCHAR(50) NOT NULL," +
                 "Date_Creation DATE," +
                 "PARENT INT(5)," +
-                "FOREIGN KEY (PARENT) REFERENCES service(ID))", "/gestion_rh", "Table \"service\" Created");
-        executeQuery(DB_URL, UserName, Password, "CREATE TABLE employe(" +
+                "FOREIGN KEY (PARENT) REFERENCES service(ID))";
+        executeQuery(DB_URL, UserName, Password, query, ls, "/gestion_rh", "Table \"service\" Created");
+
+        // Employee Table
+        query = "CREATE TABLE employe(" +
                 "ID INT(5) Primary Key AUTO_INCREMENT NOT NULL," +
                 "NOM VARCHAR(50) NOT NULL," +
                 "PRESON VARCHAR(50) NOT NULL," +
@@ -70,13 +91,14 @@ public class App extends Application {
                 "NAISSANCE DATE," +
                 "SERVICE INT(5), " +
                 "CONSTRAINT service FOREIGN KEY (SERVICE)" +
-                "REFERENCES SERVICE(ID) ON UPDATE CASCADE)", "/gestion_rh",
+                "REFERENCES SERVICE(ID) ON UPDATE CASCADE)";
+        executeQuery(DB_URL, UserName, Password, query, ls, "/gestion_rh",
                 "Table \"employee\" Created");
 
         // Insert Into Tables
-        executeQuery(DB_URL, UserName, Password, "INSERT INTO SERVICE(ID, NOM, DATE_CREATION, PARENT) " +
-                "VALUES(NULL, 'SERVICE COMPTABILITE', '2012-10-15', NULL)", "/gestion_rh",
-                "data Inserted into \"service\"");
+        query = "INSERT INTO SERVICE(ID, NOM, DATE_CREATION, PARENT) " +
+                "VALUES(NULL, 'SERVICE COMPTABILITE', '2012-10-15', NULL)";
+        executeQuery(DB_URL, UserName, Password, query, ls, "/gestion_rh", "data Inserted into \"service\"");
 
         // executeQuery(DB_URL, UserName, Password, "INSERT INTO EMPLOYE " +
         // "VALUES(NULL, 'Anas', 'Elouraini', '0610957256', 'Hey Dalia',20000,

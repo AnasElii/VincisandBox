@@ -1,10 +1,10 @@
+import java.util.ArrayList;
 import java.util.Properties;
 import java.io.InputStream;
 
 public class GestionEmployee {
 
-    public void addEmployee(String nom, String prenom, String adresse, String naissance, String tel, String salaire,
-            String service) {
+    public void addEmployee(ArrayList properties) {
 
         final String FilePath = "env.properties";
         final String DB_URL;
@@ -22,11 +22,9 @@ public class GestionEmployee {
             UserName = p.getProperty("user");
             Password = p.getProperty("password");
 
-            String query = "INSERT INTO employe (NOM, PRESON, ADRESSE, NAISSANCE, TEL, SALAIRE, SERVICE) VALUES ('"
-                    + nom + "', '" + prenom + "', '" + adresse + "', '" + naissance + "', '" + tel + "', '" + salaire
-                    + "', '" + service + "')";
-
-            App.executeQuery(DB_URL, UserName, Password, query, "/gestion_rh", "Employee Added");
+            String query = "INSERT INTO employe (NOM, PRESON, TEL, ADRESSE, SALAIRE, NAISSANCE, SERVICE)" +
+                    "VALUES(?, ?, ?, ?, ?, ?, ?)";
+            App.executeQuery(DB_URL, UserName, Password, query, properties, "/gestion_rh", "Employee Added");
 
         } catch (Exception e) {
             System.out.println(e.toString());

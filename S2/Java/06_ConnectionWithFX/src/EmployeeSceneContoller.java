@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -33,10 +35,18 @@ public class EmployeeSceneContoller {
         if (cbService.getValue() == null) {
             cbService.setValue("null");
         }
+        ArrayList ar = new ArrayList<>();
+        ar.add(tfNom.getText());
+        ar.add(tfPrenom.getText());
+        ar.add(tfTel.getText());
+        ar.add(tfAdresse.getText());
+        ar.add(tfSalaire.getText());
+        ar.add(tfNaissance.getText());
+        ar.add(cbService.getValue());
+        System.out.println(ar);
+
         GestionEmployee gp = new GestionEmployee();
-        gp.addEmployee(tfNom.getText(), tfPrenom.getText(), tfAdresse.getText(),
-                tfNaissance.getText(), tfTel.getText(),
-                tfSalaire.getText(), cbService.getValue());
+        gp.addEmployee(ar);
     }
 
     @FXML
