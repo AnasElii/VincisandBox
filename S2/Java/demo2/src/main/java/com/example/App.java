@@ -2,9 +2,27 @@ package com.example;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
-public class App {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class App extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("EmployeeScene.fxml"));
+        Scene scene = new Scene(root);
+
+        primaryStage.setTitle("Gestion RH");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
         final String FilePath = "example/env.properties";
         final String DB_NAME;
@@ -43,5 +61,11 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+
+        launch(args);
+    }
+
+    public static void executeQuery(String dB_URL, String userName, String password, String query, ArrayList properties,
+            String string, String string2) {
     }
 }
